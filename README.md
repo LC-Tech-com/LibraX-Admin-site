@@ -1,6 +1,6 @@
 # LibraX – Smart Library Management System
 
-LibraX is a smart library management system designed to automate book borrowing and returning using face recognition and barcode-based book identification.
+LibraX is a smart library management system designed to automate book borrowing and returning using face recognition and barcode-based book identification even from a mobile device.
 
 ## Features
 
@@ -23,7 +23,6 @@ LibraX is a smart library management system designed to automate book borrowing 
 - OpenCV
 - HTML
 - CSS
-- JavaScript
 
 ## Project Structure
 
