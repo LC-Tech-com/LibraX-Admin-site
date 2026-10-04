@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibraX Login</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-card {
+            width: 420px;
+            background: rgba(18, 23, 34, .9);
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+        }
+
+        .login-title {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .login-title span {
+            color: #25d0ff;
+        }
+
+        .login-subtitle {
+            color: #9aa4b2;
+            margin-bottom: 30px;
+        }
+
+        button {
+            width: 100%;
+            background: linear-gradient(135deg,
+                    #25d0ff,
+                    #4f46e5);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            opacity: .95;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="login-card">
+
+        <h1 class="login-title">
+            Libra<span>X</span>
+        </h1>
+
+        <p class="login-subtitle">
+            Smart Library Management System
+        </p>
+
+        <form method="POST">
+
+            <label>Username</label>
+            <input type="text" name="username" required>
+
+            <br><br>
+
+            <label>Password</label>
+            <input type="password" name="password" required>
+
+            <button type="submit">
+                Sign In
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}LibraX{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_css %}{% endblock %}
+
+</head>
+
+<body>
+
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <aside class="sidebar">
+
+        <div>
+
+            <div class="logo">
+                Libra<span>X</span>
+            </div>
+
+            <div class="nav-menu">
+
+                <a href="{{ url_for('dashboard.dashboard_page') }}">
+                    Dashboard
+                </a>
+
+                <a href="{{ url_for('users.users_page') }}">
+                    Users
+                </a>
+
+                <a href="{{ url_for('books.books_page') }}">
+                    Books
+                </a>
+
+                <a href="{{ url_for('transactions.transactions_page') }}">
+                    Transactions
+                </a>
+
+                <a href="{{ url_for('settings.settings_page') }}">
+                    Settings
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="bottom-menu">
+
+            <a href="{{ url_for('auth.logout') }}">
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+    <main class="main">
+
+        <div class="topbar">
+
+            <div class="breadcrumb">
+
+                {% block breadcrumb %}
+                Admin
+                {% endblock %}
+
+            </div>
+
+            <div class="admin-profile">
+
+                <img src="{{ url_for('static', filename='profile_images/' + current_user.profile_image) }}"
+                    class="profile-avatar">
+
+                <div>
+                    {{ current_user.full_name }}
+                </div>
+
+            </div>
+
+        </div>
+        <div class="container">
+
+            {% block content %}
+            {% endblock %}
+
+        </div>
+
+    </main>
+
+    <script>
+        const glow = document.getElementById("cursorGlow");
+
+        document.addEventListener("mousemove", e => {
+            glow.style.left = e.clientX + "px";
+            glow.style.top = e.clientY + "px";
+        });
+    </script>
+
+    {% block extra_js %}{% endblock %}
+
+</body>
+
+</html>

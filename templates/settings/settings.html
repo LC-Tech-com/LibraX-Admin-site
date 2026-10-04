@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+Admin > Settings
+{% endblock %}
+
+{% block title %}
+Settings
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .settings-header {
+        margin-bottom: 25px;
+    }
+
+    .settings-header p {
+        color: #94a3b8;
+    }
+
+    .settings-container {
+        max-width: 1000px;
+    }
+
+    .settings-card {
+        background: rgba(18, 23, 34, .85);
+        border: 1px solid rgba(255, 255, 255, .08);
+        border-radius: 24px;
+        backdrop-filter: blur(20px);
+        padding: 35px;
+    }
+
+    .settings-section {
+        margin-bottom: 35px;
+    }
+
+    .settings-section h3 {
+        margin-bottom: 20px;
+        color: #25d0ff;
+    }
+
+    .settings-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group.full {
+        grid-column: 1/-1;
+    }
+
+    .form-group label {
+        margin-bottom: 8px;
+        color: #cbd5e1;
+        font-size: 14px;
+    }
+
+    .form-group input {
+        width: 100%;
+        background: #0f172a;
+        border: 1px solid rgba(255, 255, 255, .08);
+        color: white;
+        padding: 14px;
+        border-radius: 12px;
+        outline: none;
+    }
+
+    .form-group input:focus {
+        border-color: #25d0ff;
+    }
+
+    .save-btn {
+        background: linear-gradient(135deg, #25d0ff, #4f46e5);
+        color: white;
+        border: none;
+        padding: 14px 24px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .section-divider {
+        height: 1px;
+        background: rgba(255, 255, 255, .08);
+        margin: 30px 0;
+    }
+
+    @media(max-width:768px) {
+
+        .settings-grid {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+    .settings-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .settings-card {
+        margin: 0 auto;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="settings-container">
+
+    <div class="settings-header">
+
+        <h1>System Settings</h1>
+
+        <p>
+            Configure library policies, borrowing rules and face recognition.
+        </p>
+
+    </div>
+
+    <div class="settings-card">
+
+        <form method="POST">
+
+            <div class="settings-section">
+
+                <h3>Library Settings</h3>
+
+                <div class="settings-grid">
+
+                    <div class="form-group full">
+
+                        <label>Library Name</label>
+
+                        <input type="text" name="library_name"
+                            value="{{ settings.get('library_name','LibraX Smart Library') }}">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div class="settings-section">
+
+                <h3>Borrowing Rules</h3>
+
+                <div class="settings-grid">
+
+                    <div class="form-group">
+
+                        <label>Maximum Books Per User</label>
+
+                        <input type="number" name="max_books_per_user"
+                            value="{{ settings.get('max_books_per_user','3') }}">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Borrow Duration (Days)</label>
+
+                        <input type="number" name="borrow_duration_days"
+                            value="{{ settings.get('borrow_duration_days','14') }}">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Fine Per Day (₹)</label>
+
+                        <input type="number" name="fine_per_day" value="{{ settings.get('fine_per_day','5') }}">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div class="settings-section">
+
+                <h3>Face Recognition</h3>
+
+                <div class="settings-grid">
+
+                    <div class="form-group">
+
+                        <label>Face Match Threshold</label>
+
+                        <input type="text" name="face_match_threshold"
+                            value="{{ settings.get('face_match_threshold','0.57') }}">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <button type="submit" class="save-btn">
+
+                Save Settings
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
